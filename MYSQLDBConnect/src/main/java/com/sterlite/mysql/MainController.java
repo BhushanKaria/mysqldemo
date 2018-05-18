@@ -42,6 +42,11 @@ public class MainController {
 		return userRepository.findAll();
 	}
 	
+	@RequestMapping(path="/search")
+	public User searchUserById(@RequestParam String id) {
+		return userRepository.findById(new Integer(id)).get();
+	}
+	
 	@RequestMapping(path="/update")
 	public @ResponseBody String updateUser(@RequestParam String id,@RequestParam String name,@RequestParam String  email) {
 		User entity=userRepository.findById(new Integer(id)).get();
